@@ -1,7 +1,8 @@
 /* Global styles */
 :root {
     --background: #1e1e2e; 
-    --background-light: #fdebf3;
+    /*--background-light: #fdebf3;*/
+    --background-light: #fff5e6;
     --button: #78c2ad;
     --text: #fdebf3;
     --text-light: #1e1e2e; 
