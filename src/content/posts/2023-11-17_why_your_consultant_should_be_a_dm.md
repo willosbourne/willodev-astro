@@ -3,7 +3,7 @@ title: 'Why Your Consultant Should be a Dungeon Master'
 author: Will Osbourne
 date: '2023-11-17'
 image:
-    url: '/blog-post.webp'
+    url: '/post-images/2023-11-17_why_your_consultant_should_be_a_dm/dm-consultant-thumbnail.png'
     alt: 'Post Thumbnail'
 ---
 # Why your consultant should be a dungeon master

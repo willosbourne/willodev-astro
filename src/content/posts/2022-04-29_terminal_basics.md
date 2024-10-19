@@ -3,7 +3,7 @@ title: 'Terminal Basics'
 author: Will Osbourne
 date: '2022-04-29'
 image:
-  url: '/blog-post.webp'
+  url: '/post-images/2022-04-29_terminal_basics_images/thumbnail.png'
   alt: 'Post Thumbnail'
 ---
 # Terminal Basics
@@ -22,20 +22,30 @@ GUI (Graphical User Interface).
 You have a lot of options for what terminal you use, listed are a few you may use
 or already be familiar with:
 
-> Terminal.app
-![terminal.app](../../../public/post-images/2022-04-29_terminal_basics_images/072407e5.png)
+### Terminal.app
+<div class="center">
+  <img class="pro-img" width="500px" src="/post-images/2022-04-29_terminal_basics_images/072407e5.png" alt="terminal.app" />
+</div>
 
-> iTerm2
-![iTerm2](../../../public/post-images/2022-04-29_terminal_basics_images/bbbd08de.png)
+### iTerm2
+<div class="center">
+  <img class="pro-img" width="500px" src="/post-images/2022-04-29_terminal_basics_images/bbbd08de.png" alt="iTerm2" />
+</div>
 
-> Windows PowerShell
-![Windows PowerShell](../../../public/post-images/2022-04-29_terminal_basics_images/e10df4f1.png)
+### Windows PowerShell
+<div class="center">
+  <img class="pro-img" width="500px" src="/post-images/2022-04-29_terminal_basics_images/e10df4f1.png" alt="Windows PowerShell" />
+</div>
 
-> gitBash for Windows
-![gitBash for Windows](../../../public/post-images/2022-04-29_terminal_basics_images/677c0052.png)
+### gitBash for Windows
+<div class="center">
+  <img class="pro-img" width="500px" src="/post-images/2022-04-29_terminal_basics_images/677c0052.png" alt="gitBash for Windows" />
+</div>
 
-> Warp
-![Warp](../../../public/post-images/2022-04-29_terminal_basics_images/7e39c538.png)
+### Warp
+<div class="center">
+  <img class="pro-img" width="500px" src="/post-images/2022-04-29_terminal_basics_images/7e39c538.png" alt="gitBash for Windows" />
+</div>
 
 For the rest of this tutorial, you’ll be seeing Warp in examples. It's still in
 active development & only available for MacOS right now, but it's a modern take on
@@ -61,14 +71,18 @@ The CLI and GUI are just two different representations of what's happening on yo
 computer. For comparison, below is the terminal & file explorer showing the
 contents of the same folder.
 
-![Viewing a directory in a CLI (ls) vs in a GUI (Finder)](../../../public/post-images/2022-04-29_terminal_basics_images/1e1b678b.png)
+<div class="center">
+  <img class="pro-img" width="500px" src="/post-images/2022-04-29_terminal_basics_images/1e1b678b.png" alt="Viewing a directory in a CLI (ls) vs in a GUI (Finder)" />
+</div>
 
 The terminal is more than just a text based file explorer, there’s also full programs
 that run on the command line. Pictured below on the left is the command htop, which
 is similar to Mac’s Activity Monitor (or Windows' Task Manager) to view &
 manage active running processes.
 
-![Viewing active processing in a CLI (htop) vs in a GUI (Activity Monitor)](../../../public/post-images/2022-04-29_terminal_basics_images/cefb6f4b.png)
+<div class="center">
+  <img class="pro-img" width="500px" src="/post-images/2022-04-29_terminal_basics_images/cefb6f4b.png" alt="Viewing active processing in a CLI (htop) vs in a GUI (Activity Monitor)" />
+</div>
 
 ### The Importance of Learning How to Use a Terminal
 Whether you work front-end, back-end, mobile, or a mix, you will want to be
@@ -181,7 +195,9 @@ it, but its very beginner-friendly for two main reasons
 
 1. By default, your keyboard functions as normal, if you hit `h` an `h` is typed to the page where your cursor is.
 2. The commands you need to save `^O` and quit `^X` are listed right at the bottom (the `^` character denotes the `ctrl` button)
-![Nano Command List](../../../public/post-images/2022-04-29_terminal_basics_images/66194bc0.png)
+<div class="center">
+  <img class="pro-img" width="500px" src="/post-images/2022-04-29_terminal_basics_images/66194bc0.png" alt="Nano Command List" />
+</div>
 
 To set nano as your default editor, just type the following into your console:
 
@@ -234,7 +250,9 @@ terminal experience be more organized and easier to manage.
 
 As an example, a common use case could be running a pane to handle git changes,
 while having another pane for leaving the server running and monitoring logs.
-![Example of Tiled Terminal Setup](../../../public/post-images/2022-04-29_terminal_basics_images/97b38535.png)
+<div class="center">
+  <img class="pro-img" width="500px" src="/post-images/2022-04-29_terminal_basics_images/97b38535.png" alt="Example of Tiled Terminal Setup" />
+</div>
 
 ## Conclusion
 The terminal can be powerful and useful, if you're willing to spend a bit of time to
@@ -253,7 +271,9 @@ Quick cheat sheet of things I'd recommend
 - [Trash-CLI](https://formulae.brew.sh/formula/trash-cli) - lets you use `trash` instead of `rm` to remove files / folders in a non-permenant fashion
 - [z](https://github.com/agkozak/zsh-z) - a frecent (frequent + recent) search to let you jump between directories quicker
 - [you-should-use](https://github.com/MichaelAquilina/zsh-you-should-use) - a zsh plug in that will tell you if you used a full command when you have an alias existing for it
-![you-should-use example](../../../public/post-images/2022-04-29_terminal_basics_images/cbcc24de.png)
+<div class="center">
+  <img class="pro-img" width="500px" src="/post-images/2022-04-29_terminal_basics_images/cbcc24de.png" alt="you-should-use example" />
+</div>
 
 
 ## Aliases & Functions

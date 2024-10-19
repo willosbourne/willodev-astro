@@ -3,7 +3,7 @@ title: 'Lessons Learned from Dotnet Upgrades'
 author: Will Osbourne
 date: '2023-12-31'
 image:
-   url: '/blog-post.webp'
+   url: '/post-images/2023-12-31_lessons_learned_from_dotnet_upgrades/thumbnail.png'
    alt: 'Post Thumbnail'
 ---
 # Lessons Learned from Dotnet Upgrades
