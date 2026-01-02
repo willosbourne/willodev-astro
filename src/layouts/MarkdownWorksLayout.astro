@@ -3,9 +3,6 @@ import BaseLayout from './Layout.astro';
 const { frontmatter } = Astro.props;
 ---
 <BaseLayout pageTitle={frontmatter.title}>
-    <div class="gif">
-        <img width="300" height="259" alt="RaccoonLaptopGif" src="/laptop.webp"/>
-    </div>
     <h2>{frontmatter.title}</h2>
     <slot />
     <ul class="badge__list">
@@ -23,4 +20,3 @@ const { frontmatter } = Astro.props;
         <img class="pro-img" width="500px" height="281" src={frontmatter.worksImage2.url} alt={frontmatter.worksImage2.alt} />
     </div>
 </BaseLayout>
-

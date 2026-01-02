@@ -2,14 +2,13 @@
 import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/CardPost.astro";
-const allPosts = await getCollection("posts");
+const allPosts = (await getCollection("posts")).sort((a, b) =>
+    new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
 const pageTitle = "Posts";
 ---
 
 <Layout pageTitle={pageTitle}>
-    <div class="gif">
-        <img width="300" height="259" alt="RaccoonNotesGif" src="/blog.webp" />
-    </div>
     <h2>Blog</h2>
     <ul role="list" class="link-card-grid">
         {
