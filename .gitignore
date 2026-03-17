@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # editor files
 .idea/
+
+# local-only markdown files
+*.local.md
