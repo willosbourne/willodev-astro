@@ -1,0 +1,25 @@
+---
+import PostLayout from "../../layouts/PostLayout.astro";
+import { getAllPosts } from "../../lib/ghost";
+import type { ClassifiedPost } from "../../lib/ghost";
+
+export async function getStaticPaths() {
+  const allPosts = await getAllPosts();
+  // Only generate pages for articles and link posts, not thoughts
+  const postsWithPages = allPosts.filter((p) => p.type !== "thought");
+  return postsWithPages.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+interface Props {
+  post: ClassifiedPost;
+}
+
+const { post } = Astro.props;
+---
+
+<PostLayout post={post}>
+  <Fragment set:html={post.html} />
+</PostLayout>

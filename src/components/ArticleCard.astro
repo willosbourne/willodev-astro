@@ -1,0 +1,29 @@
+---
+import type { ClassifiedPost } from "../lib/ghost";
+import { formatDate } from "../lib/ghost";
+
+interface Props {
+  post: ClassifiedPost;
+}
+
+const { post } = Astro.props;
+---
+
+<li class="feed-item feed-item--article">
+  <a class="feed-item__link" href={`/posts/${post.slug}/`}>
+    {post.feature_image && (
+      <div class="feed-item__img-wrap">
+        <img
+          class="feed-item__img"
+          src={post.feature_image}
+          alt={post.feature_image_alt || post.title}
+          loading="lazy"
+        />
+      </div>
+    )}
+    <h3 class="feed-item__title">{post.title}</h3>
+    <time class="feed-item__date" datetime={post.published_at}>
+      {formatDate(post.published_at)}
+    </time>
+  </a>
+</li>

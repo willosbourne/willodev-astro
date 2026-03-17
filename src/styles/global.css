@@ -193,6 +193,230 @@ li {
   padding: 0;
 }
 
+/* Feed */
+.feed {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.feed-item {
+  padding: 0;
+}
+
+.feed-item__date {
+  display: block;
+  font-family: var(--body);
+  font-size: 0.85rem;
+  opacity: 0.6;
+  margin-top: 0.4rem;
+}
+
+/* Article Card */
+.feed-item--article .feed-item__link {
+  display: block;
+  text-decoration: none;
+  color: var(--text);
+  border-radius: 8px;
+  transition: transform 0.15s ease;
+}
+
+.feed-item--article .feed-item__link:hover {
+  transform: scale(1.02);
+}
+
+.feed-item__img-wrap {
+  text-align: center;
+}
+
+.feed-item__img {
+  border-radius: 12px;
+  max-width: 100%;
+  height: auto;
+}
+
+.feed-item__title {
+  font-family: var(--body);
+  font-size: 1.3rem;
+  font-weight: normal;
+  margin: 0.5rem 0 0;
+  text-align: center;
+}
+
+/* Thought Block */
+.feed-item--thought {
+  border-left: 3px solid var(--button);
+  padding-left: 1rem;
+}
+
+.thought__content {
+  font-family: var(--body);
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+.thought__content p {
+  text-indent: 0;
+  margin: 0 0 0.5rem;
+}
+
+.thought__content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Link Card */
+.feed-item--link {
+  border-left: 3px solid var(--text-link);
+  padding-left: 1rem;
+}
+
+.link-card__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.link-card__title {
+  font-family: var(--body);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-link);
+  text-decoration: none;
+}
+
+.link-card__title:hover {
+  text-decoration: underline;
+}
+
+.link-card__arrow {
+  font-size: 0.9em;
+  margin-left: 0.15em;
+}
+
+.link-card__domain {
+  font-family: var(--body);
+  font-size: 0.8rem;
+  opacity: 0.5;
+}
+
+.link-card__commentary {
+  font-family: var(--body);
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-top: 0.3rem;
+}
+
+.link-card__commentary p {
+  text-indent: 0;
+  margin: 0.3rem 0;
+}
+
+.link-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.link-card__permalink {
+  font-size: 1rem;
+  color: var(--text);
+  opacity: 0.4;
+  text-decoration: none;
+}
+
+.link-card__permalink:hover {
+  opacity: 1;
+}
+
+/* Post Title Link (for link post pages) */
+.post-title-link {
+  color: var(--text-link);
+  text-decoration: none;
+}
+
+.post-title-link:hover {
+  text-decoration: underline;
+}
+
+/* Ghost Koenig Editor Content */
+.blog-post .kg-card {
+  margin: 1.5rem 0;
+}
+
+.blog-post .kg-image-card img,
+.blog-post .kg-gallery-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.blog-post .kg-bookmark-card {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.blog-post .kg-bookmark-container {
+  display: flex;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.blog-post .kg-bookmark-content {
+  flex: 1;
+  padding: 1rem;
+}
+
+.blog-post .kg-bookmark-title {
+  font-family: var(--body);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.blog-post .kg-bookmark-description {
+  font-family: var(--body);
+  font-size: 0.85rem;
+  opacity: 0.7;
+  margin-top: 0.3rem;
+}
+
+.blog-post .kg-bookmark-metadata {
+  font-family: var(--body);
+  font-size: 0.75rem;
+  opacity: 0.5;
+  margin-top: 0.5rem;
+}
+
+.blog-post .kg-bookmark-thumbnail {
+  width: 140px;
+  min-height: 100%;
+}
+
+.blog-post .kg-bookmark-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.blog-post .kg-callout-card {
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.blog-post figcaption {
+  font-family: var(--body);
+  font-size: 0.85rem;
+  text-align: center;
+  opacity: 0.6;
+  margin-top: 0.5rem;
+}
+
 /* Button */
 .btn {
   text-align: center;
@@ -351,6 +575,22 @@ html.light {
 
 .light .badge__link {
   color: var(--text-link);
+}
+
+.light .feed-item--article .feed-item__link {
+  color: var(--text-light);
+}
+
+.light .link-card__permalink {
+  color: var(--text-light);
+}
+
+.light .kg-bookmark-card {
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+.light .kg-bookmark-container {
+  color: var(--text-light);
 }
 
 /* Media Query */

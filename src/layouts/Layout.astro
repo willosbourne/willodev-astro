@@ -4,13 +4,26 @@ import { fade } from 'astro:transitions';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
-const { pageTitle } = Astro.props;
+interface Props {
+	pageTitle: string;
+	description?: string;
+	ogImage?: string | null;
+}
+
+const { pageTitle, description, ogImage } = Astro.props;
+const metaDescription = description || "Will Osbourne — software engineer, writer, and maker.";
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') || 'https://willo.dev';
 ---
 <!DOCTYPE html>
 <html transition:animate="none" lang="en">
 	<head>
         <meta charset="utf-8" />
-        <meta name="description" content="Astro description">
+        <meta name="description" content={metaDescription}>
+        <meta property="og:title" content={pageTitle}>
+        <meta property="og:description" content={metaDescription}>
+        <meta property="og:type" content="website">
+        {ogImage && <meta property="og:image" content={ogImage}>}
+        <link rel="alternate" type="application/rss+xml" title="willo.dev" href={`${siteUrl}/rss.xml`}>
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" type="image/svg+xml" href="/favicon.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
