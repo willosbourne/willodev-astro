@@ -1,0 +1,32 @@
+---
+import type { ClassifiedPost } from "../lib/ghost";
+import { formatDate } from "../lib/ghost";
+
+interface Props {
+  post: ClassifiedPost;
+}
+
+const { post } = Astro.props;
+const hasImage = !!post.feature_image;
+const excerpt = post.custom_excerpt || post.excerpt || "";
+---
+
+<li class="feed-item feed-item--article">
+  <a class="feed-item__link" href={`/feed/${post.slug}/`}>
+    <div class="article-card__body">
+      <h3 class="feed-item__title">{post.title}</h3>
+      {excerpt && <p class="article-card__excerpt">{excerpt}</p>}
+      <time class="feed-item__date" datetime={post.published_at}>
+        {formatDate(post.published_at)}
+      </time>
+    </div>
+    {hasImage && (
+      <img
+        class="article-card__thumb"
+        src={post.feature_image}
+        alt={post.feature_image_alt || post.title}
+        loading="lazy"
+      />
+    )}
+  </a>
+</li>

@@ -1,0 +1,22 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ArticleCard from "../components/ArticleCard.astro";
+import ThoughtBlock from "../components/ThoughtBlock.astro";
+import LinkCard from "../components/LinkCard.astro";
+import { getAllPosts } from "../lib/ghost";
+
+const allPosts = await getAllPosts();
+const pageTitle = "Feed";
+---
+
+<Layout pageTitle={pageTitle}>
+  <h2>Feed</h2>
+  {allPosts.length === 0 && <p>Nothing here yet.</p>}
+  <ul role="list" class="feed">
+    {allPosts.map((post) => {
+      if (post.type === "thought") return <ThoughtBlock post={post} />;
+      if (post.type === "link") return <LinkCard post={post} />;
+      return <ArticleCard post={post} />;
+    })}
+  </ul>
+</Layout>

@@ -1,0 +1,61 @@
+---
+import BaseLayout from "./Layout.astro";
+import type { ClassifiedPost } from "../lib/ghost";
+import { formatDate, getSourceDomain } from "../lib/ghost";
+
+interface Props {
+  post: ClassifiedPost;
+}
+
+const { post } = Astro.props;
+const isLink = post.type === "link" && post.externalUrl;
+const domain = isLink ? getSourceDomain(post.externalUrl!) : null;
+const authorName = post.primary_author?.name || post.authors?.[0]?.name || "Will Osbourne";
+---
+
+<BaseLayout
+  pageTitle={post.title}
+  description={post.custom_excerpt || post.excerpt}
+  ogImage={post.feature_image}
+>
+  <article class="blog-post">
+    {isLink ? (
+      <h2 style="text-decoration:none;">
+        <a
+          href={post.externalUrl!}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="post-title-link"
+          aria-label={`${post.title} (opens ${domain} in a new tab)`}
+        >
+          {post.title}
+          <span class="link-card__arrow" aria-hidden="true">&nearr;</span>
+        </a>
+      </h2>
+    ) : (
+      <h2 style="text-decoration:none;">{post.title}</h2>
+    )}
+    <ul class="badge__list">
+      <li>
+        <span class="badge badge--item">AUTHOR</span>{authorName}
+      </li>
+      <li>
+        <span class="badge badge--item">PUBLISHED</span>{formatDate(post.published_at)}
+      </li>
+      {isLink && (
+        <li>
+          <span class="badge badge--item">LINK</span>
+          <a
+            href={post.externalUrl!}
+            class="badge__link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {domain}
+          </a>
+        </li>
+      )}
+    </ul>
+    <slot />
+  </article>
+</BaseLayout>
