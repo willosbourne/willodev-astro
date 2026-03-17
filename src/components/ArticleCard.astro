@@ -7,23 +7,26 @@ interface Props {
 }
 
 const { post } = Astro.props;
+const hasImage = !!post.feature_image;
+const excerpt = post.custom_excerpt || post.excerpt || "";
 ---
 
 <li class="feed-item feed-item--article">
   <a class="feed-item__link" href={`/posts/${post.slug}/`}>
-    {post.feature_image && (
-      <div class="feed-item__img-wrap">
-        <img
-          class="feed-item__img"
-          src={post.feature_image}
-          alt={post.feature_image_alt || post.title}
-          loading="lazy"
-        />
-      </div>
+    <div class="article-card__body">
+      <h3 class="feed-item__title">{post.title}</h3>
+      {excerpt && <p class="article-card__excerpt">{excerpt}</p>}
+      <time class="feed-item__date" datetime={post.published_at}>
+        {formatDate(post.published_at)}
+      </time>
+    </div>
+    {hasImage && (
+      <img
+        class="article-card__thumb"
+        src={post.feature_image}
+        alt={post.feature_image_alt || post.title}
+        loading="lazy"
+      />
     )}
-    <h3 class="feed-item__title">{post.title}</h3>
-    <time class="feed-item__date" datetime={post.published_at}>
-      {formatDate(post.published_at)}
-    </time>
   </a>
 </li>
