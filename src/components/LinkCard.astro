@@ -31,7 +31,7 @@ const domain = post.externalUrl ? getSourceDomain(post.externalUrl) : null;
     <time class="feed-item__date" datetime={post.published_at}>
       {formatDate(post.published_at)}
     </time>
-    <a class="link-card__permalink" href={`/posts/${post.slug}/`}>
+    <a class="link-card__permalink" href={`/feed/${post.slug}/`}>
       &infin;
     </a>
   </div>

@@ -6,11 +6,11 @@ import LinkCard from "../components/LinkCard.astro";
 import { getAllPosts } from "../lib/ghost";
 
 const allPosts = await getAllPosts();
-const pageTitle = "Posts";
+const pageTitle = "Feed";
 ---
 
 <Layout pageTitle={pageTitle}>
-  <h2>Blog</h2>
+  <h2>Feed</h2>
   {allPosts.length === 0 && <p>Nothing here yet.</p>}
   <ul role="list" class="feed">
     {allPosts.map((post) => {

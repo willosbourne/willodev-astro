@@ -12,7 +12,7 @@ const excerpt = post.custom_excerpt || post.excerpt || "";
 ---
 
 <li class="feed-item feed-item--article">
-  <a class="feed-item__link" href={`/posts/${post.slug}/`}>
+  <a class="feed-item__link" href={`/feed/${post.slug}/`}>
     <div class="article-card__body">
       <h3 class="feed-item__title">{post.title}</h3>
       {excerpt && <p class="article-card__excerpt">{excerpt}</p>}

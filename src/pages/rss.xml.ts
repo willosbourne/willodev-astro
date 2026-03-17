@@ -26,7 +26,7 @@ export async function GET(context: APIContext) {
         return {
           title: post.title,
           description: post.html,
-          link: `/posts/#thought-${post.id}`,
+          link: `/feed/#thought-${post.id}`,
           pubDate: new Date(post.published_at),
         };
       }
@@ -36,7 +36,7 @@ export async function GET(context: APIContext) {
         title: post.title,
         description: post.custom_excerpt || post.excerpt,
         content: post.html,
-        link: `/posts/${post.slug}/`,
+        link: `/feed/${post.slug}/`,
         pubDate: new Date(post.published_at),
       };
     }),
