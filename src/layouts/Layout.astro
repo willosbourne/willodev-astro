@@ -13,6 +13,10 @@ interface Props {
 const { pageTitle, description, ogImage } = Astro.props;
 const metaDescription = description || "Will Osbourne — software engineer, writer, and maker.";
 const siteUrl = Astro.site?.toString().replace(/\/$/, '') || 'https://willo.dev';
+
+const umamiSrc = import.meta.env.PUBLIC_UMAMI_SRC;
+const umamiWebsiteId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID;
+const umamiEnabled = import.meta.env.PROD && umamiSrc && umamiWebsiteId;
 ---
 <!DOCTYPE html>
 <html transition:animate="none" lang="en">
@@ -29,7 +33,17 @@ const siteUrl = Astro.site?.toString().replace(/\/$/, '') || 'https://willo.dev'
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="preload" href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Pacifico&display=swap" as="style">
-        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Pacifico&display=swap" rel="stylesheet">       
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Pacifico&display=swap" rel="stylesheet">
+        {umamiEnabled && (
+            <script
+                is:inline
+                defer
+                src={umamiSrc}
+                data-website-id={umamiWebsiteId}
+                data-auto-track="false"
+                data-domains="willo.dev"
+            ></script>
+        )}
         <meta name="generator" content={Astro.generator} />
         <title>{pageTitle}</title>
         <ViewTransitions />
@@ -52,9 +66,43 @@ const siteUrl = Astro.site?.toString().replace(/\/$/, '') || 'https://willo.dev'
                     document.documentElement.classList.remove("light");
                 }
               }
-            
+
             colorMode();
             document.addEventListener('astro:after-swap', colorMode);
+
+            let lastTrackedPath = '';
+            function trackPageview() {
+                if (typeof window.umami === 'undefined') return;
+                const path = location.pathname + location.search;
+                if (path === lastTrackedPath) return;
+                lastTrackedPath = path;
+                try { window.umami.track(); } catch { /* never break the page */ }
+            }
+
+            function handleAnchorClick(event: MouseEvent) {
+                if (typeof window.umami === 'undefined') return;
+                const target = event.target;
+                if (!(target instanceof Element)) return;
+                const anchor = target.closest('a');
+                if (!anchor) return;
+                const href = anchor.getAttribute('href');
+                if (!href) return;
+
+                if (href === '/rss.xml') {
+                    try { window.umami.track('rss-click'); } catch {}
+                    return;
+                }
+
+                if (!/^https?:\/\//i.test(href)) return;
+                try {
+                    const url = new URL(href);
+                    if (url.host === location.host) return;
+                    window.umami.track('outbound-link', { url: url.toString() });
+                } catch { /* malformed URL — skip */ }
+            }
+
+            document.addEventListener('astro:page-load', trackPageview);
+            document.addEventListener('click', handleAnchorClick, { capture: true });
         </script>
 	</body>
 </html>
