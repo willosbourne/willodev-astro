@@ -262,7 +262,8 @@ li {
 }
 
 .feed-item__node--article::before,
-.feed-item__node--link::before {
+.feed-item__node--link::before,
+.feed-item__node--thought::before {
   content: "";
   position: absolute;
   width: 20px;
@@ -292,10 +293,20 @@ li {
 }
 
 .feed-item__node--thought {
-  width: 9px;
-  height: 9px;
+  color: var(--feed-thought);
+}
+
+.feed-item__node--thought::before {
+  background: color-mix(in srgb, var(--feed-thought) 18%, transparent);
+}
+
+.feed-item__node--thought::after {
+  content: "";
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
   background: var(--feed-thought);
-  margin-top: 7px;
 }
 
 /* Content column */
@@ -775,14 +786,15 @@ html.light {
   }
 
   .feed-item__node--article::before,
-  .feed-item__node--link::before {
+  .feed-item__node--link::before,
+  .feed-item__node--thought::before {
     width: 18px;
     height: 18px;
   }
 
-  .feed-item__node--thought {
-    width: 8px;
-    height: 8px;
+  .feed-item__node--thought::after {
+    width: 7px;
+    height: 7px;
   }
 
   .feed-item__content {
