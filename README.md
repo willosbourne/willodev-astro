@@ -4,10 +4,11 @@ Personal site and blog for Will Osbourne — [willo.dev](https://willo.dev).
 
 ## Architecture
 
-Static site built with [Astro 4](https://astro.build) and deployed to Netlify. Content lives in two places:
+Static site built with [Astro 4](https://astro.build) and deployed via Coolify. Content lives in two places:
 
-- **Local content collections** (`src/content/`) — Markdown projects and posts, defined in `src/content/config.ts`.
 - **Ghost** — long-form blog posts are pulled from a headless Ghost instance at build time via the Content API (`src/lib/ghost.ts`).
+- **[Archive] Local content collections** (`src/content/`) — Markdown projects and posts, defined in `src/content/config.ts`.
+
 
 The unified feed (`/feed/`) blends articles, thoughts, and links, with individual entries rendered at `/feed/[slug]/`. An RSS feed is generated at `/rss.xml`. Privacy-friendly analytics are provided by [Umami](https://umami.is).
 
