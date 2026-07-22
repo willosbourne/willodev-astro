@@ -7,11 +7,23 @@ interface Props {
 }
 
 const { post } = Astro.props;
+const date = formatDate(post.published_at);
 ---
 
 <li class="feed-item feed-item--thought" id={`thought-${post.id}`}>
-  <div class="thought__content" set:html={post.html} />
-  <time class="feed-item__date" datetime={post.published_at}>
-    {formatDate(post.published_at)}
+  <time class="feed-item__date feed-item__date--gutter" datetime={post.published_at}>
+    {date}
   </time>
+  <div class="feed-item__spine" aria-hidden="true">
+    <span class="feed-item__line"></span>
+    <span class="feed-item__node feed-item__node--thought"></span>
+  </div>
+  <div class="feed-item__content">
+    <div class="thought__content" set:html={post.html} />
+    <div class="feed-item__meta">
+      <time class="feed-item__date feed-item__date--inline" datetime={post.published_at}>
+        {date}
+      </time>
+    </div>
+  </div>
 </li>
