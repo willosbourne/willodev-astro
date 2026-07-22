@@ -18,8 +18,11 @@ html {
 }
 
 body {
-  max-width: 540px;
+  max-width: 720px;
+  width: 100%;
   margin: 0 auto;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
   text-align: justify;
 }
 
@@ -472,6 +475,8 @@ li {
 .pro-img {
   border-radius: 16px;
   margin-top: 10px;
+  max-width: 100%;
+  height: auto;
 }
 
 /* Footer */
@@ -623,10 +628,6 @@ html.light {
 
 /* Media Query */
 @media only screen and (max-width: 600px) {
-  body {
-    width: 350px;
-  }
-
   .navbar {
     display: initial;
   }
@@ -656,6 +657,6 @@ html.light {
 
   .pro-img {
     height: auto;
-    width: 350px;
+    width: 100%;
   }
 }
