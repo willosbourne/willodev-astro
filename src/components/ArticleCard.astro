@@ -7,26 +7,33 @@ interface Props {
 }
 
 const { post } = Astro.props;
-const hasImage = !!post.feature_image;
 const excerpt = post.custom_excerpt || post.excerpt || "";
+const date = formatDate(post.published_at);
 ---
 
 <li class="feed-item feed-item--article">
-  <a class="feed-item__link" href={`/feed/${post.slug}/`}>
-    <div class="article-card__body">
-      <h3 class="feed-item__title">{post.title}</h3>
-      {excerpt && <p class="article-card__excerpt">{excerpt}</p>}
-      <time class="feed-item__date" datetime={post.published_at}>
-        {formatDate(post.published_at)}
+  <time class="feed-item__date feed-item__date--gutter" datetime={post.published_at}>
+    {date}
+  </time>
+  <div class="feed-item__spine" aria-hidden="true">
+    <span class="feed-item__line"></span>
+    <span class="feed-item__node feed-item__node--article">
+      <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+        <line x1="3" y1="4.5" x2="13" y2="4.5"></line>
+        <line x1="3" y1="8" x2="13" y2="8"></line>
+        <line x1="3" y1="11.5" x2="9" y2="11.5"></line>
+      </svg>
+    </span>
+  </div>
+  <a class="feed-item__content feed-item__link" href={`/feed/${post.slug}/`}>
+    <h3 class="feed-item__title">{post.title}</h3>
+    {excerpt && <p class="feed-item__body">{excerpt}</p>}
+    <div class="feed-item__meta">
+      <time class="feed-item__date feed-item__date--inline" datetime={post.published_at}>
+        {date}
       </time>
+      <span class="feed-item__sep" aria-hidden="true">&middot;</span>
+      <span class="feed-item__action">Read article &rarr;</span>
     </div>
-    {hasImage && (
-      <img
-        class="article-card__thumb"
-        src={post.feature_image}
-        alt={post.feature_image_alt || post.title}
-        loading="lazy"
-      />
-    )}
   </a>
 </li>

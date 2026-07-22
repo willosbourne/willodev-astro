@@ -8,31 +8,52 @@ interface Props {
 
 const { post } = Astro.props;
 const domain = post.externalUrl ? getSourceDomain(post.externalUrl) : null;
+const date = formatDate(post.published_at);
 ---
 
 <li class="feed-item feed-item--link">
-  <div class="link-card__header">
-    <a
-      class="link-card__title"
-      href={post.externalUrl!}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={`${post.title} (opens ${domain} in a new tab)`}
-    >
-      {post.title}
-      <span class="link-card__arrow" aria-hidden="true">&nearr;</span>
-    </a>
-    {domain && <span class="link-card__domain">{domain}</span>}
+  <time class="feed-item__date feed-item__date--gutter" datetime={post.published_at}>
+    {date}
+  </time>
+  <div class="feed-item__spine" aria-hidden="true">
+    <span class="feed-item__line"></span>
+    <span class="feed-item__node feed-item__node--link">
+      <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="4.5" y1="11.5" x2="11.5" y2="4.5"></line>
+        <polyline points="5.5,4.5 11.5,4.5 11.5,10.5"></polyline>
+      </svg>
+    </span>
   </div>
-  {post.html && (
-    <div class="link-card__commentary" set:html={post.html} />
-  )}
-  <div class="link-card__meta">
-    <time class="feed-item__date" datetime={post.published_at}>
-      {formatDate(post.published_at)}
-    </time>
-    <a class="link-card__permalink" href={`/feed/${post.slug}/`}>
-      &infin;
-    </a>
+  <div class="feed-item__content">
+    {domain && (
+      <a
+        class="link-card__domain"
+        href={post.externalUrl!}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`${post.title} (opens ${domain} in a new tab)`}
+      >
+        {domain} &nearr;
+      </a>
+    )}
+    <h3 class="feed-item__title feed-item__title--link">
+      <a
+        class="link-card__title"
+        href={post.externalUrl!}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {post.title}
+      </a>
+    </h3>
+    {post.html && <div class="link-card__commentary" set:html={post.html} />}
+    <div class="feed-item__meta">
+      <time class="feed-item__date feed-item__date--inline" datetime={post.published_at}>
+        {date}
+      </time>
+      <a class="link-card__permalink" href={`/feed/${post.slug}/`} aria-label="Permalink">
+        &infin;
+      </a>
+    </div>
   </div>
 </li>
